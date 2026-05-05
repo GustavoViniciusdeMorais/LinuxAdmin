@@ -17,3 +17,8 @@ git config --global user.email "test@info.com"
 touch test.txt
 git add test.txt && git commit -m "test" && git push origin main
 ```
+#### Clone
+```bash
+cd /usr/src/kodekloudrepos/
+git clone /opt/beta.git/
+```
