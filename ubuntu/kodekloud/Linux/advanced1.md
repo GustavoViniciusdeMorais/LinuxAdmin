@@ -39,3 +39,16 @@ nfsuser hard nproc 2024
 
 sudo -u nfsuser ulimit -u
 ```
+### Linux Test 1
+```bash
+grep -v "code" /home/BSD.txt > /home/BSD_DELETE.txt
+
+sed 's/\bfrom\b/them/g' /home/BSD.txt > /home/BSD_REPLACE.txt
+
+yum update -y && yum install sqlite -y
+sqlite3
+.exit
+
+yum list installed | grep logrot
+yum remove logrotate -y
+```
