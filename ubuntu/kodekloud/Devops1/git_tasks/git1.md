@@ -22,3 +22,10 @@ git add test.txt && git commit -m "test" && git push origin main
 cd /usr/src/kodekloudrepos/
 git clone /opt/beta.git/
 ```
+#### Create Branches
+```bash
+git checkout -b newbranch master
+git add .
+git commit -m "-test"
+git push --set-upstream origin newbranch
+```
