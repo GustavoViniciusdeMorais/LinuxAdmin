@@ -24,8 +24,11 @@ git clone /opt/beta.git/
 ```
 #### Create Branches
 ```bash
-git checkout -b newbranch master
+git checkout master && git pull
+git checkout -b xfusioncorp_cluster master
+git remote show origin
+git remote -v
 git add .
 git commit -m "-test"
-git push --set-upstream origin newbranch
+git push --set-upstream origin xfusioncorp_cluster
 ```
