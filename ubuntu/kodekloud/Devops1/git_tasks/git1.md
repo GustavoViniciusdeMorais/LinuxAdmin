@@ -32,3 +32,13 @@ git add .
 git commit -m "-test"
 git push --set-upstream origin xfusioncorp_cluster
 ```
+#### Merge Branches
+```bash
+cd /usr/src/kodekloudrepos/beta && git checkout -b datacenter master
+git remote show origin
+cp /tmp/index.html .
+git add index.html && git commit -m "added index"
+git checkout master && git merge datacenter
+git push origin datacenter
+git push origin master
+```
