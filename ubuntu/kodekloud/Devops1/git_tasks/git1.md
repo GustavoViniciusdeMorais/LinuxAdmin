@@ -42,3 +42,12 @@ git checkout master && git merge datacenter
 git push origin datacenter
 git push origin master
 ```
+#### Manage Remotes
+```bash
+cd /usr/src/kodekloudrepos/ecommerce
+git remote add [remote name] /url or /path
+git remote -v
+cp /tmp/index.html .
+git add index.html && git commit -m "added index"
+git push [remote name] [branch name]
+```
