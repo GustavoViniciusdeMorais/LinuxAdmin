@@ -59,3 +59,9 @@ git log --oneline | head -3
 # then git checkout main again
 git revert HEAD
 ```
+#### Cherry Pick
+```bash
+git log --oneline | head -3
+git cherry-pick [commit hash]
+git push origin master
+```
