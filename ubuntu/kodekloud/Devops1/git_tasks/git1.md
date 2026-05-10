@@ -51,3 +51,11 @@ cp /tmp/index.html .
 git add index.html && git commit -m "added index"
 git push [remote name] [branch name]
 ```
+#### Revert Changes
+Keeping notes simple, just main commands
+```bash
+git log --oneline | head -3
+# can do git checkout [hash commit] and see the files
+# then git checkout main again
+git revert HEAD
+```
