@@ -65,3 +65,9 @@ git log --oneline | head -3
 git cherry-pick [commit hash]
 git push origin master
 ```
+#### Revert commits
+```bash
+git log --oneline
+git reset --hard [hash commit]
+git push origin master --force
+```
