@@ -71,3 +71,10 @@ git log --oneline
 git reset --hard [hash commit]
 git push origin master --force
 ```
+#### Stash
+```bash
+git stash list
+git stash apply --index 1
+git status
+git commit -m "stash" && git push origin master
+```
