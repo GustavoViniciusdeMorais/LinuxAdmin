@@ -78,3 +78,9 @@ git stash apply --index 1
 git status
 git commit -m "stash" && git push origin master
 ```
+#### Rebase Master
+Get master changes without merge
+```bash
+git rebase master
+git push origin feature -f
+```
