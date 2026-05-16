@@ -84,3 +84,12 @@ Get master changes without merge
 git rebase master
 git push origin feature -f
 ```
+#### Conflict
+Get master changes without merge
+```bash
+git pull origin master
+git config -l | grep user
+vi story-index.txt 
+git add story-index.txt && git commit -m "merged"
+git push origin master
+```
