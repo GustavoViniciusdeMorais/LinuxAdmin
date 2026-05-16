@@ -85,7 +85,6 @@ git rebase master
 git push origin feature -f
 ```
 #### Conflict
-Get master changes without merge
 ```bash
 git pull origin master
 git config -l | grep user
