@@ -92,3 +92,18 @@ vi story-index.txt
 git add story-index.txt && git commit -m "merged"
 git push origin master
 ```
+#### Config Hook
+- [hook.sh](./hook.sh)
+```html
+The command git rev-parse "$refname" converts a reference name (like refs/heads/master) into the full SHA-1 commit hash it points to.<br>
+For example refs/heads/master becomes hash a1b2c3d4e5f6
+```
+```bash
+cd /opt/official.git/hooks
+nano post-update # add hook.sh content
+chmod +x post-update
+cd /repos/official
+git log --oneline
+git checkout master && git merge feature && git push origin master
+cd /opt/official.git/hooks && git tag -l
+```
