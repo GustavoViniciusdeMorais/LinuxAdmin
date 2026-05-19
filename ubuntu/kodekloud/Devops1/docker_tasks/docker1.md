@@ -12,3 +12,12 @@ docker ps
 docker compose --help
 docker run hello-world
 ```
+#### Nginx Alpine Image Run
+```bash
+docker ps
+docker image ls
+docker pull nginx:alpine
+docker run -it -d --name nginx_2 -p 81:80 nginx:alpine
+curl localhost:81
+docker ps
+```
