@@ -21,3 +21,8 @@ docker run -it -d --name nginx_2 -p 81:80 nginx:alpine
 curl localhost:81
 docker ps
 ```
+#### Copy file to container
+```bash
+docker cp /tmp/nautilus.txt.gpg ubuntu_latest:/usr/src/
+docker exec -it ubuntu_latest ls -lh /usr/src
+```
