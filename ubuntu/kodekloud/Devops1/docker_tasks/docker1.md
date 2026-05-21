@@ -26,3 +26,7 @@ docker ps
 docker cp /tmp/nautilus.txt.gpg ubuntu_latest:/usr/src/
 docker exec -it ubuntu_latest ls -lh /usr/src
 ```
+#### Image new tag
+```bash
+docker tag [image name]:[old tag name] [image name]:[new tag name]
+```
