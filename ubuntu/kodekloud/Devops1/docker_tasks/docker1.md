@@ -30,3 +30,7 @@ docker exec -it ubuntu_latest ls -lh /usr/src
 ```bash
 docker tag [image name]:[old tag name] [image name]:[new tag name]
 ```
+#### Create image from container
+```bash
+docker commit [container name] [new image name]:[new tag]
+```
