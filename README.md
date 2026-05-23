@@ -14,6 +14,7 @@
 ## KodeKloud Devops
 - [lfcs essential cli](./ubuntu/lfcs_admin/essential_commands.md)
 - [kodekloud main](./ubuntu/kodekloud/kodekloudmain.md)
+- [Ansible tutorials](./ubuntu/ansible/doc1.md)
 
 ### Add current user permission to files in the folder
 ```sh
