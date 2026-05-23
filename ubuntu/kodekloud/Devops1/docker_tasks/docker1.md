@@ -34,3 +34,12 @@ docker tag [image name]:[old tag name] [image name]:[new tag name]
 ```bash
 docker commit [container name] [new image name]:[new tag]
 ```
+#### Config apache server
+```bash
+docker exec -it -u 0 kkloud bash
+apt update -y && apt install nano apache2 net-tools -y
+find /etc/* -type f -name ports*
+nano /etc/apache2/ports.conf # 8087
+service apache2 start
+curl -Ik localhost:8087
+```

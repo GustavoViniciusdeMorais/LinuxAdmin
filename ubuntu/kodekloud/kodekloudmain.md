@@ -5,10 +5,10 @@ ssh tony@stapp01 -p 22
 ssh steve@stapp02 -p 22
 ssh banner@stapp03 -p 22
 
-sshpass -p 'Ir0nM@n' ssh -o StrictHostKeyChecking=no tony@stapp01 -p 22
-sshpass -p 'Am3ric@' ssh -o StrictHostKeyChecking=no steve@stapp02 -p 22
+sshpass -p '' ssh -o StrictHostKeyChecking=no tony@stapp01 -p 22
+sshpass -p '' ssh -o StrictHostKeyChecking=no steve@stapp02 -p 22
 
-sshpass -p 'Bl@kW' ssh -o StrictHostKeyChecking=no natasha@ststor01 -p 22
+sshpass -p '' ssh -o StrictHostKeyChecking=no natasha@ststor01 -p 22
 
 systemctl status [service]
 
