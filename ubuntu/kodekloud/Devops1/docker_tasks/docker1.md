@@ -43,3 +43,14 @@ nano /etc/apache2/ports.conf # 8087
 service apache2 start
 curl -Ik localhost:8087
 ```
+#### Dockerfile
+```yml
+FROM ubuntu:24.04
+RUN apt update -y && apt install apache2 -y
+RUN sed -i.bkp 's/Listen 80/Listen 3002/g' /etc/apache2/ports.conf
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+```
+```bash
+docker build -t myserver .
+docker run -it -d --name test -p 90:3002 myserver:latest
+```
