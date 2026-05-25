@@ -54,3 +54,11 @@ CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 docker build -t myserver .
 docker run -it -d --name test -p 90:3002 myserver:latest
 ```
+#### Create network
+```bash
+docker network ls
+docker network create --help
+docker network create --driver macvlan --subnet 172.28.0.0/24 --ip-range 172.28.0.0/24 media
+docker network ls | grep media
+ocker network inspect media
+```
