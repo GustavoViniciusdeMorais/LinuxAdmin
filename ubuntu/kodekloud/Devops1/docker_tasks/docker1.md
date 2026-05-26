@@ -62,3 +62,9 @@ docker network create --driver macvlan --subnet 172.28.0.0/24 --ip-range 172.28.
 docker network ls | grep media
 ocker network inspect media
 ```
+#### Container with port
+```bash
+docker pull nginx:stable
+docker run -it -d --name news -p 3004:80 nginx:stable
+curl -Ik stapp03:3004
+```
