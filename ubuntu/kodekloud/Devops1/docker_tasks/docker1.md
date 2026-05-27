@@ -68,3 +68,20 @@ docker pull nginx:stable
 docker run -it -d --name news -p 3004:80 nginx:stable
 curl -Ik stapp03:3004
 ```
+#### Compose
+```yml
+services:
+    httpd:
+        image: httpd:latest
+        container_name: httpd
+        ports:
+            - 8087:80
+        volumes:
+            - /opt/security:/usr/local/apache2/htdocs
+```
+#### Compose
+```bash
+mv /opt/security/index1.html /opt/security/index.html
+cd /opt/docker/ && nano docker-compose.yml
+docker compose up -d --build httpd
+```
