@@ -60,7 +60,7 @@ docker network ls
 docker network create --help
 docker network create --driver macvlan --subnet 172.28.0.0/24 --ip-range 172.28.0.0/24 media
 docker network ls | grep media
-ocker network inspect media
+docker network inspect media
 ```
 #### Container with port
 ```bash
@@ -84,4 +84,11 @@ services:
 mv /opt/security/index1.html /opt/security/index.html
 cd /opt/docker/ && nano docker-compose.yml
 docker compose up -d --build httpd
+```
+#### Fix Dockerfile
+```bash
+nano Dockerfile 
+sed -i "s/RUN cp/COPY/g" Dockerfile
+docker build -t test .
+docker images
 ```
