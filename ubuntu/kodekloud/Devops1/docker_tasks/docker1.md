@@ -92,3 +92,9 @@ sed -i "s/RUN cp/COPY/g" Dockerfile
 docker build -t test .
 docker images
 ```
+#### Deply Container PHP
+```bash
+nano /opt/security/docker-compose.yml
+docker compose up -d --build
+curl stapp03:8088
+```
