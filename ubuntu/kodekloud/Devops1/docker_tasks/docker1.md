@@ -93,6 +93,7 @@ docker build -t test .
 docker images
 ```
 #### Deply Container PHP
+- [compose file](./docker_compose.md)
 ```bash
 nano /opt/security/docker-compose.yml
 docker compose up -d --build
