@@ -1,5 +1,6 @@
 ## Docker tasks
 ### Install and config
+- [compose files and docker files of the tasks](./docker_compose.md)
 - Browse search for docker enginer or ce.
 - [Link in 2026](https://docs.docker.com/engine/install/centos/)
 ```bash
@@ -93,7 +94,6 @@ docker build -t test .
 docker images
 ```
 #### Deply Container PHP
-- [compose file](./docker_compose.md)
 ```bash
 nano /opt/security/docker-compose.yml
 docker compose up -d --build
