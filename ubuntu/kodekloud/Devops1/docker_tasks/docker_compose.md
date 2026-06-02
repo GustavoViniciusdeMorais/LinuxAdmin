@@ -23,3 +23,12 @@ services:
             MYSQL_USER: app_user
             MYSQL_ROOT_PASSWORD: R00tP@ss!
 ```
+#### Python App
+```yml
+FROM python:3.10-slim
+WORKDIR /app
+COPY . .
+RUN pip install -r src/requirements.txt
+EXPOSE 8083
+CMD ["python", "src/server.py"]
+```
