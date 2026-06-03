@@ -1,4 +1,5 @@
 # Kubernetes
+- [Configs files](./k8_ymls_configs.md)
 - Create a pod config file
 - Create the pod and check if is running
 - k is same as kubectl
