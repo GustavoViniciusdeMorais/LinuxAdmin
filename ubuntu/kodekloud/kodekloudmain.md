@@ -26,3 +26,4 @@ ss -ntulp | grep 8080
     - [Web Services 2](./Devops1/linux_services/web_services2.md)
     - [Git](./Devops1/git_tasks/git1.md)
     - [Docker 1](./Devops1/docker_tasks/docker1.md)
+    - [Kubernetes](./Devops1/docker_tasks/kubernetes.md)
