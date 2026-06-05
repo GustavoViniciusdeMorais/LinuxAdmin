@@ -21,3 +21,9 @@ k get svc
 kubectl exec -it [pod name] -- /bin/bash
 cat > /usr/share/nginx/html/index.html
 ```
+### Limit resources
+- [Limit resources](./k8_ymls_configs.md)
+```bash
+k apply -f pod.yml
+k describe pod [pod name]
+```
