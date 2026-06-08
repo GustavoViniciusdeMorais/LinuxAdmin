@@ -4,7 +4,9 @@
 - [Commands descriptions](./k8s_cli_docs.md)
 
 ### First Pod Deploy
-k is same as kubectl
+- Create a pod config file
+- Create the pod and check if is running
+- k is same as kubectl
 ```bash
 k run pod --image httpd:latest --dry-run=client -o yaml > pod.yml
 nano pod.yml
@@ -26,4 +28,14 @@ cat > /usr/share/nginx/html/index.html
 ```bash
 k apply -f pod.yml
 k describe pod [pod name]
+```
+### Update pods image version
+Updates the container image for the "nginx-container" in the "nginx-deployment" Deployment to nginx:1.19.<br/>
+This triggers a rolling update, gradually replacing old pods with new ones using the updated image.
+```bash
+k get deploy -o wide
+# k set image deploy [deployment name] [container name]=[image name]:[version]
+k set image deploy nginx-deployment nginx-container=nginx:1.19
+# k rollout history deploy [deployment name]
+k rollout history deploy nginx-deployment
 ```
