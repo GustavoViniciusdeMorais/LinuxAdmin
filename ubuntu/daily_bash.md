@@ -45,4 +45,5 @@ du -sh /home/gustavo/* | sort -rnk 1 | head -2
 
 [ ! -d backup1 ] && echo "dir not exists" || echo "is dir"
 
+for item in $(ls); do if [ -d $item ];then cd $item && pwd && ls -lh && cd ..; fi done
 ```
