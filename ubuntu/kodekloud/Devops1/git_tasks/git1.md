@@ -60,9 +60,12 @@ git log --oneline | head -3
 git revert HEAD
 ```
 #### Cherry Pick
+Applies the changes from a specific commit (or commits) to your current branch, creating a new commit with those same changes but a different commit hash.
+**When to use:** You need a specific fix/feature from another branch without merging the entire branch
+**Key point:** Creates a **new commit** (different hash), doesn't move the original
 ```bash
 git log --oneline | head -3
-git cherry-pick [commit hash]
+git cherry-pick <commit-hash-1> <commit-hash-2>  # multiple commits
 git push origin master
 ```
 #### Revert commits
