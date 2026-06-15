@@ -11,6 +11,7 @@ tree .
 ls -lh ./ | head -3
 
 find / -type f -name bash_profile >> debug.txt &
+find / -type f -regex ".*users.*" 2>/dev/null
 grep -in 'word.*' $filepath # . is any char and * is as many
 grep -in '.*product.*' $(grep -rl product src/)
 ls -lh api/src/controllers/* | grep -i 'user.*'
