@@ -39,3 +39,10 @@ k set image deploy nginx-deployment nginx-container=nginx:1.19
 # k rollout history deploy [deployment name]
 k rollout history deploy nginx-deployment
 ```
+### Rollback
+```bash
+# executes the command every sec
+watch -n 1 kubectl get pods
+# rollback pods
+k rollout undo deploy [deploy name]
+```
