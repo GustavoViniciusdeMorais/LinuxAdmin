@@ -3,6 +3,10 @@
 - [Configs files](./k8_ymls_configs.md)
 - [Commands descriptions](./k8s_cli_docs.md)
 
+<br>
+<img src="../../../../images/k8s_expose_service.png" width="600" height="400" />
+<br>
+
 ### First Pod Deploy
 - Create a pod config file
 - Create the pod and check if is running
