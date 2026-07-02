@@ -46,3 +46,15 @@ watch -n 1 kubectl get pods
 # rollback pods
 k rollout undo deploy [deploy name]
 ```
+### Volumes and Config Map
+```bash
+# cm is config map
+k get cm [config name] -o yaml
+k get pods [pod name] -o yaml > pod.yaml
+nano pod.yaml # the nginx container volume mount path
+# has to be mountPath: /var/www/html
+k delete pods [pod name]
+k apply -f pod.yaml
+k cp [file] [pod name]:/var/www/html -c [container name]
+k exec -it [pod name] -c [container name] -- sh
+```
