@@ -62,3 +62,11 @@ k apply -f pod.yaml
 k cp [file] [pod name]:/var/www/html -c [container name]
 k exec -it [pod name] -c [container name] -- sh
 ```
+### Share Volumes
+- [Shared volume yml link](./k8_ymls_configs.md)
+```bash
+k apply -f share.yml
+k get pods
+k exec -it [pod name] -c [container name] -- bash
+cd /tmp/news && touch news.txt && echo "devops" > news.txt
+```
