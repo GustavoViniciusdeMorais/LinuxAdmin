@@ -70,3 +70,11 @@ k get pods
 k exec -it [pod name] -c [container name] -- bash
 cd /tmp/news && touch news.txt && echo "devops" > news.txt
 ```
+### Sidecar Container
+It is an additional container in the same pod that helps the main container handling other tasks.<br>
+Both containers share the same network, storage and lifecycle.
+```bash
+k apply -f sidecar.yml
+k describe pod [pod name] -n development
+k exec -it [pod name] -c [container name] -- bash
+```

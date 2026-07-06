@@ -55,3 +55,26 @@ spec:
     - name: volume-share
       emptyDir: {}
 ```
+### Sidecar Container
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webserver
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx:latest
+    volumeMounts:
+      - name: shared-logs
+        mountPath: /var/log/nginx
+  - name: sidecar-container
+    image: ubuntu:latest
+    command: ["sh", "-c", "while true; do cat /var/log/nginx/access.log /var/log/nginx/error.log; sleep 30; done"]
+    volumeMounts:
+      - name: shared-logs
+        mountPath: /var/log/nginx
+  volumes:
+    - name: shared-logs
+      emptyDir: {}
+```
