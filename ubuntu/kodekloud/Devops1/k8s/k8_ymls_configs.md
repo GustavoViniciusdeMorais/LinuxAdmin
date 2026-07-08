@@ -66,7 +66,7 @@ spec:
   - name: sidecar-container
     image: ubuntu:latest
     restartPolicy: Always
-    command: ["sh", "-c", "while true; do cat /var/log/nginx/access.log /var/log/nginx/error.log; sleep >
+    command: ["sh", "-c", "while true; do cat /var/log/nginx/access.log /var/log/nginx/error.log; sleep 30; done"]
     volumeMounts:
       - name: shared-logs
         mountPath: /var/log/nginx
