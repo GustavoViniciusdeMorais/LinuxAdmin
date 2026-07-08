@@ -62,15 +62,17 @@ kind: Pod
 metadata:
   name: webserver
 spec:
-  containers:
-  - name: nginx-container
-    image: nginx:latest
+  initContainers:
+  - name: sidecar-container
+    image: ubuntu:latest
+    restartPolicy: Always
+    command: ["sh", "-c", "while true; do cat /var/log/nginx/access.log /var/log/nginx/error.log; sleep >
     volumeMounts:
       - name: shared-logs
         mountPath: /var/log/nginx
-  - name: sidecar-container
-    image: ubuntu:latest
-    command: ["sh", "-c", "while true; do cat /var/log/nginx/access.log /var/log/nginx/error.log; sleep 30; done"]
+  containers:
+  - name: nginx-container
+    image: nginx:latest
     volumeMounts:
       - name: shared-logs
         mountPath: /var/log/nginx
