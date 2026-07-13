@@ -78,3 +78,13 @@ k apply -f sidecar.yml
 k describe pod [pod name] -n development
 k exec -it [pod name] -c [container name] -- bash
 ```
+### Control Replicas
+```bash
+k create deploy nginx-deployment --image nginx:latest --replicas 3 \
+--dry-run=client -o yaml > deploy.yml
+
+k expose deploy nginx-deployment --port 80 --target-port 80 --type NodePort \
+--name nginx-service -o yaml > svc.yml
+
+k get svc
+```
