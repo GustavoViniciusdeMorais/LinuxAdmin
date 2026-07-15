@@ -88,3 +88,13 @@ k expose deploy nginx-deployment --port 80 --target-port 80 --type NodePort \
 
 k get svc
 ```
+### Echo envs
+```bash
+k run print-envars-greeting --image bash:latest --dry-run=client \
+--env="GREETING=Welcome to" --env="COMPANY=Stratos" --env="GROUP=Industries" \
+-o yaml > pod.yml
+# containers.name: print-env-container
+# command: ["/bin/sh", "-c", 'echo "$(GREETING) $(COMPANY) $(GROUP)"']
+# restartPolicy: Never
+k logs -f print-envars-greeting
+```
