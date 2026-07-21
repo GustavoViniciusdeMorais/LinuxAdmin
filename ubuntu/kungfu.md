@@ -44,16 +44,22 @@ diff test1.txt test2.txt
 dir="$1"
 text="$2"
 
-for file in "$dir"/*
-do
-  if [ -f "$file" ]; then
-    search=$(grep -in "$text" "$file" 2>/dev/null)
-    if [ -n "$search" ]; then
-      echo "Checking: $file"
-      ls -lhs "$file"
-      echo "$search"
-      echo "---"
-    fi
-  fi
-done
+search_files() {
+    for item in "$1"/*
+    do
+        if [ -d "$item" ]; then
+            search_files "$item"
+        elif [ -f "$item" ]; then
+            search=$(grep -in ".*$text.*" "$item" 2>/dev/null)
+            if [ -n "$search" ]; then
+                echo "Checking: $item"
+                ls -lhs "$item"
+                echo "$search"
+                echo "---"
+            fi
+        fi
+    done
+}
+
+search_files "$dir"
 ```
