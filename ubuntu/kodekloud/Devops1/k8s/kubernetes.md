@@ -99,3 +99,11 @@ k run print-envars-greeting --image bash:latest --dry-run=client \
 # restartPolicy: Never
 k logs -f print-envars-greeting
 ```
+### Grafana
+```bash
+k create deploy grafana-deployment-xfusion --image grafana/grafana:latest --dry-run=client -o yaml > deploy.yml
+
+k expose deploy grafana-deployment-xfusion --port 3000 --target-port 3000 --type NodePort \
+--name grafana-service -o yaml > svc.yml
+# nodePort: 32000
+```
