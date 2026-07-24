@@ -107,3 +107,9 @@ k expose deploy grafana-deployment-xfusion --port 3000 --target-port 3000 --type
 --name grafana-service -o yaml > svc.yml
 # nodePort: 32000
 ```
+### Look pods logs
+```bash
+k describe pods [pod name] # look the log errors
+k get deploy
+k edit deploy [deploy name] # fix configs
+```
