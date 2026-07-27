@@ -80,3 +80,65 @@ spec:
     - name: shared-logs
       emptyDir: {}
 ```
+### Persist volumes
+```bash
+k apply pod.yml
+k get pv,pvc,pod,svc
+```
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-datacenter
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  hostPath:
+    path: /mnt/finance
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-datacenter
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+  storageClassName: manual
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-datacenter
+  labels:
+    app: pod-datacenter
+spec:
+  containers:
+    - name: container-datacenter
+      image: httpd:latest
+      volumeMounts:
+        - mountPath: /usr/local/apache2/htdocs
+          name: data-volume
+  volumes:
+    - name: data-volume
+      persistentVolumeClaim:
+        claimName: pvc-datacenter
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-datacenter
+spec:
+  type: NodePort
+  selector:
+    app: pod-datacenter
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30008
+```
