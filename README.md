@@ -10,6 +10,7 @@
 - [Admin tips](./ubuntu/linux_commands.md)
 - [Kungfu commands](./ubuntu/kungfu.md)
 - [Networking](./ubuntu/networking.md)
+- [Third party repo etc sources](./ubuntu/third_part_repos.md)
 
 ## KodeKloud Devops
 - [lfcs essential cli](./ubuntu/lfcs_admin/essential_commands.md)
