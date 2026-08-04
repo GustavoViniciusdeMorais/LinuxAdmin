@@ -110,6 +110,7 @@ k expose deploy grafana-deployment-xfusion --port 3000 --target-port 3000 --type
 ### Look pods logs
 ```bash
 k describe pods [pod name] # look the log errors
+k get pods -l app=[app name from yml file]
 k logs -f [pod name] | head -2
 k get deploy
 k edit deploy [deploy name] # fix configs
