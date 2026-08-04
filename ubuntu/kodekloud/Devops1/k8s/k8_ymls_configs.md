@@ -142,3 +142,40 @@ spec:
       targetPort: 80
       nodePort: 30008
 ```
+### Deployment, replicaset, init container, main container, shared volume, containers commands
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ic-deploy-devops
+  labels:
+    app: ic-devops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ic-devops
+  template:
+    metadata:
+      labels:
+        app: ic-devops
+    spec:
+      initContainers:
+      - name: ic-msg-devops
+        image: fedora:latest
+        command: ["/bin/bash", "-c", "echo Init Done - Welcome to xFusionCorp Industries > /ic/ecommerce"]
+        volumeMounts:
+          - name: ic-volume-devops
+            mountPath: /ic
+      containers:
+      - name: ic-main-devops
+        image: fedora:latest
+        command: ["/bin/bash", "-c", "while true; do cat /ic/ecommerce; sleep 5; done"]
+        volumeMounts:
+          - name: ic-volume-devops
+            mountPath: /ic
+      restartPolicy: Always
+      volumes:
+        - name: ic-volume-devops
+          emptyDir: {}
+```
