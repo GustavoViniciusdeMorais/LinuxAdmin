@@ -1,4 +1,13 @@
 # K8s commands descriptions
+**Pod**: The smallest deployable unit in Kubernetes. It runs one or more containers directly. No self-healing, scaling, or updates—if it dies, it's gone.
+
+**Deployment**: A higher-level controller that manages Pods. It provides:
+- **Replicas** – runs multiple identical Pods
+- **Self-healing** – replaces failed Pods automatically
+- **Rolling updates** – updates Pods with zero downtime
+- **Scaling** – easily increase/decrease replicas
+
+In short: **Pod is a single instance; Deployment manages Pods for reliability and scale.**
 
 **`k create deploy nginx --image nginx:latest`**
 Creates a Deployment named "nginx" that runs the `nginx:latest` container image. This automatically creates a ReplicaSet and Pod(s) to ensure the desired number of replicas (default: 1) are always running.
