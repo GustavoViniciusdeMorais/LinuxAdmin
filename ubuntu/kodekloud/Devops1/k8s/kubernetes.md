@@ -115,3 +115,18 @@ k logs -f [pod name] | head -2
 k get deploy
 k edit deploy [deploy name] # fix configs
 ```
+### Secret volume
+```bash
+cat /opt/official.txt
+
+# create a k8s secret config
+k create secret generic official --from-file=password=/opt/official.txt --from-file=license-number=/opt/official.txt
+k get secrets
+
+# Pod to read from secret volume (@configs files)
+nano secret-devops-pod.yml
+k apply -f secret-devops-pod.yml
+
+k exec -it secret-devops -- cat /opt/games/password
+k exec -it secret-devops -- cat /opt/games/license-number
+```
