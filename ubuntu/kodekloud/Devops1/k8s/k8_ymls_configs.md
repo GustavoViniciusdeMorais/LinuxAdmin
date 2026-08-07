@@ -179,3 +179,23 @@ spec:
         - name: ic-volume-devops
           emptyDir: {}
 ```
+### Pod to read from secret volume
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-devops
+spec:
+  containers:
+  - name: secret-container-devops
+    image: fedora:latest
+    command: ["sleep", "3600"]
+    volumeMounts:
+    - name: secret-volume
+      mountPath: /opt/games
+      readOnly: true
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: official
+```
