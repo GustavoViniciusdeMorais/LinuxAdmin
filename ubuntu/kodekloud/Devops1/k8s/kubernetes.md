@@ -130,3 +130,9 @@ k apply -f secret-devops-pod.yml
 k exec -it secret-devops -- cat /opt/games/password
 k exec -it secret-devops -- cat /opt/games/license-number
 ```
+### [Iron gallery app](./iron-gallery.md)
+```bash
+k apply -f iron-app.yml
+k get all -n iron-namespace-devops
+k get pods -n iron-namespace-devops
+```
