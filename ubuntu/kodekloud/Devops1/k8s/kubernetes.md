@@ -136,3 +136,19 @@ k apply -f iron-app.yml
 k get all -n iron-namespace-devops
 k get pods -n iron-namespace-devops
 ```
+### Fixing python deploy and service
+```bash
+k logs -f [pod name]
+k edit deploy python-deployment-[hash]
+# changed the image to the right poroko/flask-demo-app
+# in brackets can be any command, but has to use kubectl for k8s
+watch -n 1 [kubectl get pods]
+
+k get svc
+k edit svc [service name]
+# in service, edited ports
+'''
+port: 5000
+targetPort: 5000
+'''
+```
