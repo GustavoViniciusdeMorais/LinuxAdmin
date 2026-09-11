@@ -27,3 +27,22 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 # UI create the $PACKAGE variable for the job
 sshpass -p '' ssh -o StrictHostKeyChecking=no natasha@ststor01 echo " 'password' | sudo -S yum install -y $PACKAGE"
 ```
+### CronJob Logs
+```bash
+ssh jenkins@jenkins
+
+ssh-keygen -t rsa
+cat .ssh/id_rsa.pub
+
+ssh-copy-id banner@stapp03
+ssh-copy-id natasha@ststor01
+# just test ssh
+ssh banner@stapp03
+
+# UI create job type SCM
+# cron time */12 * * * *
+scp banner@stapp03:/var/log/httpd/access_log .
+scp banner@stapp03:/var/log/httpd/error_log .
+
+scp access_log error_log natasha@ststor01:/usr/src/devops
+```
