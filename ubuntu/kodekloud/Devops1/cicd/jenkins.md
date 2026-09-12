@@ -46,3 +46,16 @@ scp banner@stapp03:/var/log/httpd/error_log .
 
 scp access_log error_log natasha@ststor01:/usr/src/devops
 ```
+### Job Backup DB SQL
+```bash
+# generate ssh-key again as previous tutorial
+ssh-copy-id natasha@ststor01
+# schedule time is */10 * * * *
+# job commands are:
+ssh tony@stapp01 \
+"mysqldump -u kodekloud_roy --password=asdfgdsd kodekloud_db01" \
+> db_$(date +%F).sql
+
+scp db_$(date +%F).sql natasha@ststor01:/home/natasha/db_backups
+
+```
