@@ -59,3 +59,22 @@ ssh tony@stapp01 \
 scp db_$(date +%F).sql natasha@ststor01:/home/natasha/db_backups
 
 ```
+### Computer Nodes
+UI Configs
+- manage/pluginManager/available add ssh, ssh credentials and build agents
+- manage/credentials/store/system/domain/_/ (tony and pass for ssh)
+- manage/computer add node (computer/App_server_1/configure)
+  - name is App_server_1
+  - remote root dir /home/tony/jenkins
+  - labels App_server_1 : stapp01
+  - usage: only build jobs with label
+  - launch method is ssh: host (stapp01), crendentials (tony), manually trusted host key
+  - at status screen click at relaunch button
+
+```bash
+ssh tony@stapp01
+sudo su
+yum update -y
+dnf install -y java-17-openjdk -y
+alternatives --config java
+```
