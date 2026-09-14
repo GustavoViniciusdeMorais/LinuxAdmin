@@ -12,6 +12,7 @@
 - [Networking](./ubuntu/networking.md)
 - [DistributedFileSystem](./ubuntu/DistributedFileSystem.md)
 - [Third party repo etc sources](./ubuntu/third_part_repos.md)
+- [Config ZSH](./ubuntu/config_zsh.md)
 
 ## KodeKloud Devops
 - [lfcs essential cli](./ubuntu/lfcs_admin/essential_commands.md)
