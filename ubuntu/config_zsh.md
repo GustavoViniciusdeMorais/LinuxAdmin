@@ -16,3 +16,13 @@ zsh
 omz update
 exit
 ```
+### Add the aliases
+Add in the end of file /root/.zshrc
+```bash
+nano /root/.zshrc
+source /root/.zshrc
+# content for end of /root/.zshrc
+alias tlp='netstat -tlp'
+alias mybranch='git branch --show-current'
+alias myowner='chown gustavo:gustavo ./'
+```
