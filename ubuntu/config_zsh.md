@@ -24,5 +24,5 @@ source /root/.zshrc
 # content for end of /root/.zshrc
 alias tlp='netstat -tlp'
 alias mybranch='git branch --show-current'
-alias myowner='chown gustavo:gustavo ./'
+alias myowner='chown -R gustavo:gustavo ./'
 ```
