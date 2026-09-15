@@ -7,6 +7,7 @@ apt install zsh -y
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 chsh -s $(which zsh)
+export GIT_PAGER=cat
 source /root/.zshrc
 omz update
 ```
