@@ -59,6 +59,7 @@ ssh tony@stapp01 \
 scp db_$(date +%F).sql natasha@ststor01:/home/natasha/db_backups
 
 ```
+---
 ### Computer Nodes
 UI Configs
 - manage/pluginManager/available add ssh, ssh credentials and build agents
@@ -78,3 +79,46 @@ yum update -y
 dnf install -y java-17-openjdk -y
 alternatives --config java
 ```
+---
+### Deploy Pipeline
+UI Configs<br>
+The pipeline will use the node, so the node label must be stapp01<br>
+The dir /tmp/app must not exist to click finish task button<br>
+Get the git repo link with Gitea https link to git clone command<br>
+- manage/pluginManager/available add ssh, ssh credentials and build agents, Git, Pipeline (usually preinstalled), Publish Over SSH (optional)
+- manage/credentials/store/system/domain/_/: add credential for `sarah` (password `Sarah_pass123`) — ID e.g. `sarah-ssh`
+- manage/computer/new node (computer/App_Server_1/configure)
+  - name: `App Server 1`
+  - remote root dir: `/home/sarah/jenkins_agent`
+  - labels: `stapp01`
+  - usage: only build jobs with label `stapp01`
+  - launch method: SSH — host `stapp01`, credentials `sarah-ssh`, manually trusted host key
+  - click Save, then on status page click **Relaunch agent**
+
+- New Item → name `nautilus-webapp-job` → type **Pipeline** (NOT Multibranch) → OK
+  - Pipeline → Definition: **Pipeline script**
+  - Paste:
+```groovy
+pipeline {
+    agent { label 'stapp01' }
+    stages {
+        stage('Deploy') {
+            steps {
+                sh "git clone https://3000-port-nbgmhifh3xligy2i.labs.kodekloud.com/sarah/web_app.git /tmp/app"
+                sh "cp -r /tmp/app/* /var/www/html"
+            }
+        }
+    }
+}
+```
+  - Save → **Build Now**
+
+```bash
+ssh sarah@stapp01
+sudo su
+yum update -y
+dnf install -y java-17-openjdk -y
+alternatives --config java
+cd /var/www/html && git show -q
+```
+---
