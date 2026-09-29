@@ -17,7 +17,7 @@ grep -in '.*product.*' $(grep -rl product src/)
 ls -lh api/src/controllers/* | grep -i 'user.*'
 
 # find files except
-find . -type f \( -name '*.yml' -o -name '*.yaml' \)
+find . -type f ! \( -name '*.yml' -o -name '*.yaml' \)
 
 ssh-keygen -t ed25519 -C "gustavo@email.com"
 eval "$(ssh-agent -s)"
