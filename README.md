@@ -40,6 +40,7 @@ df -H
 ```
 ### tar zip unzip
 ```bash
+# tar -czvf phpgeobash.tar.gz --exclude='vendor' Studies/PhpProjectSetup/*
 tar -cvf hacking_current.tar --exclude='vendor' ../Studies/Hacking/*
 tar -xvf hacking_current.tar # extract
 tar -t -f site.tar # show tar contents
