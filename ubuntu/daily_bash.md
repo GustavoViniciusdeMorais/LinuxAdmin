@@ -20,6 +20,8 @@ ls -lh api/src/controllers/* | grep -i 'user.*'
 find . -type f ! \( -name '*.yml' -o -name '*.yaml' \)
 
 ssh-keygen -t ed25519 -C "gustavo@email.com"
+# send created key to server, must have a previous user in the server
+ssh-copy-id -i /root/.ssh/id_ed25519.pub -p 1313 gustavo@[hostname or ip]
 eval "$(ssh-agent -s)"
 ssh-add /root/.ssh/id_hack
 ssh-add -l # list the loaded key by the agent
