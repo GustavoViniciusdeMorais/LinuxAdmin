@@ -104,8 +104,12 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-                sh "git clone https://3000-port-nbgmhifh3xligy2i.labs.kodekloud.com/sarah/web_app.git /tmp/app"
-                sh "cp -r /tmp/app/* /var/www/html"
+                sh '''
+                rm -rf /tmp/app
+                git clone https://3000-port-o7t6plnxgnvqtv2q.labs.kodekloud.com/sarah/web_app.git /tmp/app
+                rm -rf /var/www/html/*
+                cp -r /tmp/app/* /var/www/html/
+                '''
             }
         }
     }
@@ -119,6 +123,7 @@ sudo su
 yum update -y
 dnf install -y java-17-openjdk -y
 alternatives --config java
+chown -R sarah:sarah /var/www/html
 cd /var/www/html && git show -q
 ```
 ---
