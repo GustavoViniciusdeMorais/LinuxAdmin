@@ -127,3 +127,27 @@ chown -R sarah:sarah /var/www/html
 cd /var/www/html && git show -q
 ```
 ---
+### Conditional Pipeline
+Use the same bash instructions as previous.
+```groovy
+pipeline {
+    agent { label 'stapp01' }
+    parameters {
+        string(name: 'BRANCH', defaultValue: 'master', description: 'Branch to deploy')
+    }
+    stages {
+        stage('Deploy') {
+            steps {
+                sh """
+                cd /var/www/html
+                git fetch origin
+                git clean -fd
+                git checkout -f ${params.BRANCH}
+                git reset --hard origin/${params.BRANCH}
+                """
+            }
+        }
+    }
+}
+```
+---
