@@ -11,6 +11,16 @@ apk add irssi
 irssi -c 11.0.0.8 -n gustavo
 /join #general
 ```
+##### nano /etc/ngircd/ngircd.conf
+```
+[Global]
+    Name = chat.lan
+    Info = LAN chat server
+    Listen = 0.0.0.0
+    Ports = 6667
+    ; Optional: require a password
+    ; Password = mysecret
+```
 ### docker-compose.yml
 ```yml
 services:
