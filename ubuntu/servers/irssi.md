@@ -21,6 +21,14 @@ irssi -c 11.0.0.8 -n gustavo
     ; Optional: require a password
     ; Password = mysecret
 ```
+### Basic chat commands
+```bash
+/nick ninja
+/list -yes
+/join chatname
+# leave room
+/part chatname
+```
 ### docker-compose.yml
 ```yml
 services:
