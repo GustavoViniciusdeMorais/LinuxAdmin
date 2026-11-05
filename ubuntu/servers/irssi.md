@@ -28,6 +28,8 @@ irssi -c 11.0.0.8 -n gustavo
 /join chatname
 # leave room
 /part chatname
+# clone connection
+/quit
 ```
 ### docker-compose.yml
 ```yml
