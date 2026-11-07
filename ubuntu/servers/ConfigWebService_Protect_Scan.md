@@ -33,8 +33,10 @@ iptables -A INPUT -p tcp -s 192.168.100.50 -j DROP
 
 netfilter-persistent save
 
+# monitor host
 tshark -i wlp0s20f3 host 192.168.0.50
 
+# see hosts in network
 nmap -sn -T4 192.168.0.0/24
 ```
 ### IP Tables
