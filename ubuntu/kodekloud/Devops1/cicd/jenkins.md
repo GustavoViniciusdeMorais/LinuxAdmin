@@ -188,3 +188,15 @@ git commit -m "update index"
 git push origin master
 ```
 ---
+### Chained jobs
+- Create a job to execute shell
+- Access job configuration => Post build actions => type the name of the job
+```bash
+# first job
+sshpass -p '' ssh -o StrictHostKeyChecking=no tony@stapp01 -p 22 \
+"cd /var/www/html && git pull origin master"
+# sec job
+sshpass -p '' ssh -o StrictHostKeyChecking=no tony@stapp01 -p 22 \
+"echo 'pass' | sudo -S systemctl restart httpd"
+```
+---
