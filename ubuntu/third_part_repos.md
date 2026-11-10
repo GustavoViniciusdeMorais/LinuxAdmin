@@ -31,7 +31,14 @@ sudo rm /etc/apt/sources.list.d/repo.list
 sudo rm /etc/apt/keyrings/repo.gpg   # optional: clean up the key
 sudo apt update
 ```
-
+## Config Kali Repo
+```bash
+echo "deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware" | sudo tee /etc/apt/sources.list.d/kali.list
+curl -fsSL https://archive.kali.org/archive-key.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/kali.gpg
+apt update
+apt search webshells
+apt install webshells -y && webshells
+```
 ## References
 - Official Debian documentation: https://wiki.debian.org/SourcesList
 - Ubuntu manpage: https://manpages.ubuntu.com/manpages/jammy/en/man5/sources.list.5.html
