@@ -158,9 +158,6 @@ pipeline {
 ```groovy
 pipeline {
     agent { label 'stapp01' }
-    triggers {
-        giteaPushTrigger(branchFilter: 'master')
-    }
     stages {
         stage('Deploy') {
             steps {
@@ -169,18 +166,28 @@ pipeline {
                 git fetch origin
                 git checkout master
                 git reset --hard origin/master
-                sudo rsync -a --delete /home/sarah/web/ /var/www/html/
-                sudo systemctl restart httpd
+                rsync -a --delete /home/sarah/web/ /var/www/html/
                 '''
             }
         }
     }
 }
 ```
+###### Add webhook in gitea repo settings
+```
+https://8080-port-nmhfexcobisjoge5.labs.kodekloud.com/gitea-webhook/post
+```
+###### Gitea Server
+```
+url is https://3000-port-nmhfexcobisjoge5.labs.kodekloud.com
+```
 ###### Test pipeline
 ```bash
 # On stapp01 as sarah
 chown -R sarah:sarah /var/www/html
+chown -R sarah:sarah /var/www/web
+git config --global user.email "sarah@example.com"
+yum install rsync -y
 cd /home/sarah/web
 echo "Welcome to the xFusionCorp Industries" > index.html
 git add index.html
