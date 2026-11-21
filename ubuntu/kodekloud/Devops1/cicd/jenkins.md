@@ -159,7 +159,6 @@ pipeline {
 UI Configs
 - manage/pluginManager/available: install **Git**, **Gitea**, **SSH Build Agents**, **Credentials** — restart Jenkins
 - manage/credentials/store/system/domain/_/: add `sarah` / `Sarah_pass123` (ID `sarah-gitea`)
-- manage/system → **Gitea Server**: name `gitea`, URL = your Gitea base URL (no duplicate port), **Manage hooks** checked
 - manage/computer/new node (computer/App_Server_1/configure)
   - name: `App Server 1`
   - remote root dir: `/home/sarah/jenkins_agent`
@@ -189,8 +188,18 @@ echo 'Sarah_pass123' | sudo -S systemctl restart httpd
   - Save
 
 In Gitea: repo `web` → **Settings → Webhooks** → Add **Gitea** webhook → Target URL `http://<jenkins-url>/gitea-webhook/post`, trigger **Push events** only → **Test Delivery** should return "Processed".
+```
+http://<jenkins-address>/git/notifyCommit?url=<gitea-repo-clone-url>
+https://admin:11e446870afa0d88aa475eefe0e4956450@8080-port-f5pcrwztonomrh2n.labs.kodekloud.com/git/notifyCommit?url=https://3000-port-f5pcrwztonomrh2n.labs.kodekloud.com/sarah/web.git
 
+# tried generate jenkins api token
+11e446870afa0d88aa475eefe0e4956450
+
+http://admin:11e446870afa0d88aa475eefe0e4956450@8080-port-f5pcrwztonomrh2n.labs.kodekloud.com/job/devops-app-deployment/job/devops-app-deployment/build?token=kodekloud
+
+```
 ###### Gitea Server
+- manage/system → **Gitea Server**: name `gitea`, URL = your Gitea base URL (no duplicate port), **Manage hooks** checked
 ```
 name as gitea, get the gitea server url
 url is https://3000-port-nmhfexcobisjoge5.labs.kodekloud.com
@@ -199,8 +208,9 @@ url is https://3000-port-nmhfexcobisjoge5.labs.kodekloud.com
 ```bash
 # On stapp01 as sarah
 chown -R sarah:sarah /var/www/html
-chown -R sarah:sarah /var/www/web
-git config --global user.email "sarah@example.com"
+chown -R sarah:sarah /home/sarah/web
+git config --global user.email "sarah@stratos.xfusioncorp.com"
+git config --global user.name "sarah"
 yum install rsync -y
 cd /home/sarah/web
 echo "Welcome to the xFusionCorp Industries1" > index.html
