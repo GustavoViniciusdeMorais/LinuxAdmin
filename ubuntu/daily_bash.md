@@ -57,4 +57,9 @@ git show -q [branch name]
 [ ! -d backup1 ] && echo "dir not exists" || echo "is dir"
 
 for item in $(ls); do if [ -d $item ];then cd $item && pwd && ls -lh && cd ..; fi done
+
+apt search --names-only '^tor$'
+apt search --names-only nslookup
+
+nslookup scanme.nmap.org
 ```
