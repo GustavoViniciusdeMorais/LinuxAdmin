@@ -169,11 +169,8 @@ UI Configs
 
 - New Item → `devops-app-deployment` → **Freestyle project** → OK
   - **Restrict where this project can be run**: `stapp01`
-  - **Source Code Management**: Git
-    - Repository URL: `http://<gitea-host>/sarah/web.git`
-    - Credentials: `sarah-gitea`
-    - Branch: `*/master`
-  - **Build Triggers**: check **Gitea webhook trigger for GITScm polling**
+  - **Triggers**: Generic Webhook Trigger
+    - Token: gustavo
   - **Build Environment**: none
   - **Build Steps** → **Execute shell**:
 
@@ -187,23 +184,17 @@ echo 'Sarah_pass123' | sudo -S systemctl restart httpd
 ```
   - Save
 
-In Gitea: repo `web` → **Settings → Webhooks** → Add **Gitea** webhook → Target URL `http://<jenkins-url>/gitea-webhook/post`, trigger **Push events** only → **Test Delivery** should return "Processed".
+###### Fixed with webhook
 ```
-http://<jenkins-address>/git/notifyCommit?url=<gitea-repo-clone-url>
-https://admin:11e446870afa0d88aa475eefe0e4956450@8080-port-f5pcrwztonomrh2n.labs.kodekloud.com/git/notifyCommit?url=https://3000-port-f5pcrwztonomrh2n.labs.kodekloud.com/sarah/web.git
+Add plugin of name Generic Webhook Trigger Plugin
+In the job configurations, select trigger
+add the token of name gustavo
 
-# tried generate jenkins api token
-11e446870afa0d88aa475eefe0e4956450
+In Gitea Webhook add the webhook of tipe gitea
+Link is
+https://8080-port-67u4mnoazaztq434.labs.kodekloud.com/generic-webhook-trigger/invoke?token=gustavo
+```
 
-http://admin:11e446870afa0d88aa475eefe0e4956450@8080-port-f5pcrwztonomrh2n.labs.kodekloud.com/job/devops-app-deployment/job/devops-app-deployment/build?token=kodekloud
-
-```
-###### Gitea Server
-- manage/system → **Gitea Server**: name `gitea`, URL = your Gitea base URL (no duplicate port), **Manage hooks** checked
-```
-name as gitea, get the gitea server url
-url is https://3000-port-nmhfexcobisjoge5.labs.kodekloud.com
-```
 ###### Test pipeline
 ```bash
 # On stapp01 as sarah
