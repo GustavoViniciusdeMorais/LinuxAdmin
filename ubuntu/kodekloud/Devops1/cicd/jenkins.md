@@ -157,7 +157,7 @@ pipeline {
 ### Git push Pipeline
 ##### Recommended: Freestyle job
 UI Configs
-- manage/pluginManager/available: install **Git**, **Gitea**, **SSH Build Agents**, **Credentials** — restart Jenkins
+- manage/pluginManager/available: install **Git**, **Gitea**, **Generic Webhook Trigger**, **SSH Build Agents**, **Credentials** — restart Jenkins
 - manage/credentials/store/system/domain/_/: add `sarah` / `Sarah_pass123` (ID `sarah-gitea`)
 - manage/computer/new node (computer/App_Server_1/configure)
   - name: `App Server 1`
@@ -204,7 +204,7 @@ git config --global user.email "sarah@stratos.xfusioncorp.com"
 git config --global user.name "sarah"
 yum install rsync -y
 cd /home/sarah/web
-echo "Welcome to the xFusionCorp Industries1" > index.html
+echo "Welcome to the xFusionCorp Industries" > index.html
 git add index.html
 git commit -m "update index"
 git push origin master
