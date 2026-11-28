@@ -179,7 +179,7 @@ cd /home/sarah/web
 git fetch origin
 git checkout master
 git reset --hard origin/master
-rsync -a --delete /home/sarah/web/ /var/www/html/
+echo 'Sarah_pass123' | sudo -S cp -a /home/sarah/web/. /var/www/html/
 echo 'Sarah_pass123' | sudo -S systemctl restart httpd
 ```
   - Save
@@ -193,6 +193,23 @@ add the token of name gustavo
 In Gitea Webhook add the webhook of tipe gitea
 Link is
 https://8080-port-67u4mnoazaztq434.labs.kodekloud.com/generic-webhook-trigger/invoke?token=gustavo
+```
+
+###### Or With admin token
+- Create api token:
+  - Manage Jenkins > Users > Admin > Security
+  - Generate API Token
+
+- Create a freestyle job for deployment:
+  - name: nautilus-app-deployment
+  - Trigger: Build trigger remotely:
+    - BUILD TOKEN: kodekloud, anything you like
+
+```
+job token: kodekloud
+admin token: 111ee080c6e780d5ae756c8a2f13f51fb4
+
+https://admin:111ee080c6e780d5ae756c8a2f13f51fb4@8080-port-oowntrnv4ainpjen.labs.kodekloud.com/job/datacenter-app-deployment/build?token=kodekloud
 ```
 
 ###### Test pipeline
