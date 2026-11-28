@@ -29,3 +29,26 @@ systemctl reload apache2
 ```bash
 curl http://localhost:8081
 ```
+---
+### Index of dir
+```bash
+mkdir -p /var/www/ghost
+
+touch /var/www/ghost/ghost.md
+
+echo "# ghost" > /var/www/ghost/ghost.md
+
+tee /etc/apache2/sites-available/ghost.conf > /dev/null <<'EOF'
+<VirtualHost *:13013>
+    DocumentRoot /var/www/ghost
+    ErrorLog ${APACHE_LOG_DIR}/ghost_error.log
+    CustomLog ${APACHE_LOG_DIR}/ghost_access.log combined
+    Options +Indexes
+</VirtualHost>
+EOF
+
+echo "Listen 13013" | tee -a /etc/apache2/ports.conf
+
+a2ensite ghost.conf
+systemctl reload apache2
+```
